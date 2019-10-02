@@ -1,14 +1,19 @@
 from django.shortcuts import render
-
+import threading
+import time
 # Create your views here.
 from django.http import HttpResponse
-from background_task import background
-
 
 def index(request):
+	t = threading.Thread(target=worker)
+    t.start()
     return HttpResponse('Hello, World!')
 
 
-@background(schedule=5)
-def hello():
-	print("Hello World!")
+def worker():
+    """thread worker function"""
+    while True:
+		time.sleep(1)
+		with open("a.txt", 'a') as f:
+			f.write("hello\n")
+   
