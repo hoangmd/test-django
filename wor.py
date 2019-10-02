@@ -1,4 +1,5 @@
 import time
 while True:
-	print("hello")
-	time.sleep(2)
+	with open("f.txt", "a") as f:
+		f.write("hello\n")
+	time.sleep(1)
