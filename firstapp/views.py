@@ -11,7 +11,6 @@ def index(request):
 
 
 def worker():
-    """thread worker function"""
 	while True:
 		time.sleep(1)
 		with open("a.txt", 'a') as f:
