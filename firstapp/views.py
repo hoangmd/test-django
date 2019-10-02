@@ -6,13 +6,13 @@ from django.http import HttpResponse
 
 def index(request):
 	t = threading.Thread(target=worker)
-    t.start()
-    return HttpResponse('Hello, World!')
+	t.start()
+	return HttpResponse('Hello, World!')
 
 
 def worker():
     """thread worker function"""
-    while True:
+	while True:
 		time.sleep(1)
 		with open("a.txt", 'a') as f:
 			f.write("hello\n")
