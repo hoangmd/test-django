@@ -11,4 +11,4 @@ def index(request):
 
 @background(schedule=5)
 def hello():
-	print "Hello World!"
+	print("Hello World!")
