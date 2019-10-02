@@ -2,3 +2,4 @@ django
 gunicorn
 django-heroku
 django-background-tasks
+APScheduler==3.0.0
