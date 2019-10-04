@@ -6,20 +6,11 @@ import requests
 from django.http import HttpResponse
 
 
-running = False
-def start(request):
-	a = 0
-	#r = requests.get(r'https://www.youtube.com/results?search_query=two+steps+from+hell+victory').text
-	while True:
-		a += 1
-		request.session['a'] = str(a)
- 
+
 def index(request):
-	if not request.session['a']:
-		request.session['a'] = 0
-		t = threading.Thread(target=start, args=(request,))
-		t.start()
-	return HttpResponse('Hello, World!' + request.session['a'])
+	with open("a.txt", 'r') as f:
+		s = f.readline()
+	return HttpResponse('Hello, World!' + s)
 
 
    
