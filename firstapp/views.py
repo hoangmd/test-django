@@ -10,7 +10,8 @@ running = False
 a = 0
 def run():
 	#r = requests.get(r'https://www.youtube.com/results?search_query=two+steps+from+hell+victory').text
-	a += 1
+	while True:
+		a += 1
  
 def index(request):
 	if not running:
