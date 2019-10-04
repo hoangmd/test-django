@@ -1,18 +1,13 @@
 from django.shortcuts import render
 import threading
 import time
+import requests
 # Create your views here.
 from django.http import HttpResponse
 
 def index(request):
-	t = threading.Thread(target=worker)
-	t.start()
-	return HttpResponse('Hello, World!')
+	r = requests.get(r'https://www.youtube.com/results?search_query=two+steps+from+hell+victory').text
+	return HttpResponse('Hello, World!' + str(r))
 
 
-def worker():
-	while True:
-		time.sleep(1)
-		with open("a.txt", 'a') as f:
-			f.write("hello\n")
    
