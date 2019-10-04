@@ -7,17 +7,19 @@ from django.http import HttpResponse
 
 
 running = False
-a = 0
-def start():
+def start(request):
+	a = 0
 	#r = requests.get(r'https://www.youtube.com/results?search_query=two+steps+from+hell+victory').text
 	while True:
 		a += 1
+		request.session['a'] = str(a)
  
 def index(request, run):
+	request.session['a'] = '0'
 	if run == 1:
-		t = threading.Thread(target=start)
+		t = threading.Thread(target=start, args=(request,))
 		t.start()
-	return HttpResponse('Hello, World!' + str(a))
+	return HttpResponse('Hello, World!' + request.session['a'])
 
 
    
